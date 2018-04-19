@@ -1,0 +1,291 @@
+\documentclass[a4paper, 12pt]{article}
+\usepackage[latin1]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+\let\iff\Longleftrightarrow
+
+\pagestyle{headings}
+
+\title{Analyse \\
+Devoir Maison 2}
+\author{Quentin Januel}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\newpage
+
+Pour tout $x \in \mathbb R$, on pose $f(x) = |x|^{\pi/4}\sin(x)$. \\ \\
+
+\begin{enumerate}
+
+\item{
+% 1
+$|x|^{\pi/4}$ n'a de sens que si $|x| \in \mathbb R^+$, ce qui ne pose donc pas de problème. Le reste est clairement défini pour tout $x \in \mathbb R$. \\
+
+Sur $\mathbb R^*$, $f(x) = e^{\pi/4\ln|x|}\sin(x)$. Pouvant être décomposée en produits et compositions de fonctions continues, elle est donc continue sur $\mathbb R^*$. \\
+Aussi,
+\begin{gather*}
+f(0) = 0 \\
+\lim_{x \to 0}f(x) = 0
+\end{gather*}
+$f$ est donc également continue en $0$ et par conséquent continue sur $\mathbb R$. \\
+
+$f(-x) = |-x|^{\pi/4}\sin(-x) = -|x|^{\pi/4}\sin(x) = -f(x)$ \\
+La fonction $f$ est donc impaire.
+% 1
+}
+\\
+
+\item{
+% 2
+Soit $(u_n)_{n \in \mathbb N^*} \in \mathbb R^{\mathbb N^*}$ une suite réelle définie telle que \\$\forall n \in \mathbb N^*, u_n = f(\pi(n+1/2))$. \\
+
+Posons ensuite
+\begin{gather*}
+a_n = u_{2n} = e^{\pi/4\ln n} \\
+b_n = u_{2n+1} = -e^{\pi/4\ln n}
+\end{gather*} \\
+Les fonctions exponentielle et logarithme népérien étant toutes deux croissantes, on a donc \\
+\begin{gather*}
+\lim_{n \to +\infty} a_n = +\infty \\
+\lim_{n \to +\infty} b_n = -\infty
+\end{gather*}
+
+Si une suite admet une limite $l$ \in \overline{\mathbb{R}}$, alors toute sous-suite de cette suite admet $l$ pour limite. \\
+Par contraposée, puisque $(a_n)_{n \in \mathbb N}$ et $(b_n)_{n \in \mathbb N}$ sont deux sous-suites admettant deux limites différentes, la suite $u_n$ n'admet pas de limite. \\
+
+Ainsi on a
+$$
+\begin{cases}
+	\lim_{n \to +\infty} u_n \notin \mathbb R \iff
+	\forall l \in \mathbb R, \exists \varepsilon_l > 0, \forall N \in \mathbb N, \exists n > N, |u_n-l| > \varepsilon_l \\
+
+	\lim_{n \to +\infty} u_n \neq +\infty \iff
+	\exists A > 0, \forall N \in \mathbb N, \exists n > N, u_n < A \\
+
+	\lim_{n \to +\infty} u_n \neq -\infty \iff
+	\exists A < 0, \forall N \in \mathbb N, \exists n > N, u_n > A
+\end{cases}
+$$
+
+Or, pour tout $n \in \mathbb N, n < \pi(n+1/2)$ et donc
+$$
+n > N \implies \pi(n+1/2) > N
+$$ \\
+
+En prennant $x = \pi(n+1/2)$, on a
+$$
+\begin{cases}
+	\forall l \in \mathbb R, \exists \varepsilon_l > 0, \forall N \in \mathbb R, \exists x > N, |f(x)-l| > \varepsilon_l
+	\iff \lim_{x \to +\infty} f(x) \notin \mathbb R \\
+
+	\exists A > 0, \forall N \in \mathbb N, \exists x > N, f(x) < A
+	\iff \lim_{x \to +\infty} f(x) \neq +\infty \\
+
+	\exists A < 0, \forall N \in \mathbb N, \exists x > N, f(x) > A
+	\iff \lim_{x \to +\infty} f(x) \neq -\infty
+\end{cases}
+$$
+et ainsi, $f$ n'admet pas de limite en $+\infty$.
+% 2
+}
+\\ \\
+
+\item{
+% 3
+$$
+f(x) =
+\begin{cases}
+	e^{\pi/4\ln(x)}\sin(x) & \text{si $x > 0$} \\
+	e^{\pi/4\ln(-x)}\sin(x) & \text{si $x < 0$}
+\end{cases}
+$$
+
+Pouvant être décomposée en produits et compositions de fonctions dérivables sur $\mathbb R^*$, $f$ est donc dérivable sur ce même intervalle.
+\\
+\begin{gather*}
+\implies f'(x) =
+\begin{cases}
+	e^{\pi/4\ln(x)}\cos(x)+\frac{\pi/4}{x}e^{\pi/4\ln(x)}\sin(x) & \text{si $x > 0$} \\
+	e^{\pi/4\ln(-x)}\cos(x)+\frac{\pi/4}{-x}e^{\pi/4\ln(-x)}\sin(x) & \text{si $x < 0$} \\
+\end{cases}
+\\
+\iff \forall x \in \mathbb R^*, f'(x) = e^{\pi/4\ln|x|}(\cos(x)+\frac{\pi\sin x}{4|x|})
+\end{gather*}
+\\
+
+\begin{align*}
+f'(0) =& \lim_{h \to 0}\frac{f(h)-f(0)}{h} \\
+=& \lim_{h \to 0}\frac{|h|^{\pi/4}\sin(h)-|0|^{\pi/4}\sin(0)}{h} \\
+=& \lim_{h \to 0}\frac{|h|^{\pi/4}\sin(h)}{h} \\
+=& \lim_{h \to 0}|h|^{\pi/4} \times \lim_{h \to 0}\frac{\sin(h)}{h} \text{(car les deux limites convergent)} \\
+=& 0 \times 1 = 0
+\end{align*}
+\\
+
+Au final, on a donc
+$$
+f'(x) =
+\begin{cases}
+	0 & \text{si $x = 0$} \\
+	e^{\pi/4\ln|x|}(\cos(x)+\frac{\pi\sin x}{4|x|}) & \text{sinon}
+\end{cases}
+$$
+% 3
+}
+\\ \\
+
+\item{
+% 4
+Soit $g$ une fonction définie est bornée aux voisinage d'un point $a \in \mathbb R$.
+$$
+\lim_{x \to a}h(x) = 0 \iff \forall \varepsilon_0 > 0, \exists \mu_0 > 0, |x-a| < \mu_0 \implies |h(x)| < \varepsilon_0
+$$
+$$
+\text{$g$ est bornée au voisinage de $a$} \iff \exists \mu_1 > 0, \exists B > 0, |x-a| < \mu_1 \implies |g(x)| < B
+$$
+\\
+
+Soit $\varepsilon_1 > 0$, posons $\mu = \text{max}(\mu_0, \mu_1)$ et $\varepsilon_0 = \frac{\varepsilon_1}{B}$.
+\\
+
+On a alors :
+$$
+|x-a| < \mu \implies |x-a| < \mu_0 \implies |h(x)| < \varepsilon_0 = \frac{\varepsilon_1}{B}
+$$
+et
+$$
+|x-a| < \mu \implies |x-a| < \mu_1 \implies |g(x)| < B
+$$
+\\
+
+Ainsi $|h(x)||g(x)| < \varepsilon_1 \iff |h(x)g(x)| < \varepsilon_1$ et donc
+$$
+\lim_{x \to a}h(x)g(x) = 0
+$$
+(en l'occurrence, puisque $x-a$ tend vers $0$ quand $x$ tend vers $a$, alors $\lim_{x \to a}(x-a)g(x) = 0$)
+\\ \\
+
+Soit $g(x) = \cos(x)+\frac{\pi\sin x}{4|x|}$ et $h(x) = e^{\pi/4\ln|x|}$ définies pour tout $x \in \mathbb R^*$ \\ \\
+
+$g$ est bornée au voisinage de $0$ et $\lim_{x \to 0}h(x) = 0$. \\
+
+On a donc 
+$$
+\lim_{x \to 0}g(x)h(x) = \lim_{x \to 0}f'(x) = 0
+$$
+Or $f'(0) = 0$ donc la fonction $f'$ est bien continue en $0$, ce qui prouve que la fonction $f$ est de classe $C^1$.
+% 4
+}
+\\ \\
+
+\item{
+% 5
+\begin{enumerate}
+\item{
+% a
+$f$ est impaire donc sa dérivée est paire. \\
+Puisque $\forall x \in \mathbb R, f'(x) = f'(-x)$, il est donc évidemment que si $f'(x) = 0$ alors $f'(-x) = 0$.
+% a
+}
+\\ \\
+
+\item{
+% b
+Sur l'intervalle $]0; \pi]$, $f'(x) = e^{\pi/4\ln x}(\cos x +\frac{\pi\sin x}{4x})$. \\
+Puisque la fonction exponentielle ne s'annule jamais,
+\begin{align*}
+f'(x) = 0 \iff& \cos x +\frac{\pi\sin x}{4x} = 0 \\
+\iff& \pi\sin x+4x\cos x = 0
+\end{align*}
+% b
+}
+\\ \\
+
+\item{
+% c
+Posons $g \in \mathbb R^{]0; \pi]}$ telle que \\
+\begin{align*}
+g(x) =& \pi\sin x+4x\cos x \\
+\implies g'(x) =& \pi\cos x+4\cos x-4x\sin x \\
+=& (\pi+4)\cos x-4x\sin x
+\end{align*}
+Lorsque $x$ varie entre $\pi/2$ et $\pi$, $\cos x$ varie entre $0$ et $-1$ et est donc négatif, il en va donc de même pour $(\pi+4)\cos x$. \\
+Quant à $\sin x$, il varie entre $1$ et $0$ et est donc positif, impliquant que $-4x\sin x$ est négatif. \\ \\
+Ainsi, leur somme soit $g'(x)$ est négative sur l'intervalle $]\pi/2; \pi]$ et donc $g$ est décroissante sur ce même intervalle. \\
+Avec un raisonnement similaire, on en déduit que $g$ est croissante sur $]0; \pi/2]$. \\
+
+Or $g(\pi/2) = \pi > 0$ et $g(\pi) = -4\pi < 0$. \\
+De plus $\lim_{x \to 0^+}g(x) = 0$. \\
+
+D'après le théorème des valeurs intermédiaires, l'équation $g(x) = 0$ n'a pas de solution sur $]0; \pi/2]$ et possède une unique solution $x_0$ sur $]\pi/2; \pi]$. \\
+
+L'équation $\pi\sin x+4x\cos x = 0$ possède donc une unique solution $x_0$ sur $]0; \pi]$.
+% c
+}
+\\ \\
+
+\item{
+% d
+On sait déjà que $g(\pi/2) > 0$. \\
+Puisque $g(3\pi/4) = \frac{\pi}{\sqrt 2}-\frac{3\pi}{\sqrt 2} < 0$, on peut donc dire (toujours grâce au TVI) que $x_0$ se situe dans l'intervalle $]\pi/2; 3\pi/4[$.
+% d
+}
+\\ \\
+
+\item{
+% e
+Puisque $x_0 \in ]\pi/2; 3\pi/4[$, on sait que $z_0 \in tan(]\pi/2; 3\pi/4[-\pi/2)$
+\begin{align*}
+\implies z_0 \in [tan(\pi/2-\pi/2); tan(3\pi/4-\pi/2)] =& [tan(0); tan(\pi/4)] \\
+=& [0; 1]
+\end{align*} \\
+
+Suite du 5. e)...
+% e
+}
+\\ \\
+
+\item{
+% f
+blabla f
+% f
+}
+\\ \\
+
+\item{
+% g
+blabla g
+% g
+}
+\\ \\
+
+\item{
+% h
+blabla h
+% h
+}
+
+\end{enumerate}
+% 5
+}
+\\ \\
+
+\item{
+% 6
+blabla 6
+% 6
+}
+
+
+\end{enumerate}
+
+\end{document}
+
