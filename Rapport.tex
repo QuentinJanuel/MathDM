@@ -248,7 +248,31 @@ Puisque $x_0 \in ]\pi/2; 3\pi/4[$, on sait que $z_0 \in tan(]\pi/2; 3\pi/4[-\pi/
 =& [0; 1]
 \end{align*} \\
 
-Suite du 5. e)... ^^
+On sait que
+\begin{align*}
+&\pi \sin x_0 + 4 x_0 \cos x_0 = 0 \\
+\implies &\pi \tan x_0 + 4 x_0 = 0 \\
+\implies &\tan x_0 = \frac{-4 x_0}{\pi} \\
+\implies &x_0 = \text{arctan}(\frac{-4 x_0}{\pi})
+\end{align*}
+On a aussi
+\begin{align*}
+z_0 =& \tan (x_0-\pi/2) \\
+=& \frac{-1}{\tan x_0} \\
+=& \frac{\pi}{4 x_0}
+\end{align*}
+Et puisque
+\begin{align*}
+&z_0 = \tan (x_0-\pi/2) \\
+\implies &x_0-\pi/2 = \text{arctan}z_0 \\
+\implies &x_0 = \pi/2+\text{arctan}z_0
+\end{align*}
+On peut finalement conclure que
+\begin{align*}
+z_0 =& \frac{\pi}{4 x_0} \\
+=& \frac{\pi}{4(\pi/2+\text{arctan}z_0)} \\
+=& \frac{\pi}{2\pi+4\text{arctan}z_0}
+\end{align*}
 % e
 }
 \\ \\
