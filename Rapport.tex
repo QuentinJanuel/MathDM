@@ -110,7 +110,7 @@ f(x) =
 \end{cases}
 $$
 
-Pouvant être décomposée en produits et compositions de fonctions dérivables sur $\mathbb R^*$, $f$ est donc dérivable sur ce même intervalle.
+Pouvant être décomposée en produits et compositions de fonctions dérivables sur $\mathbb R^*$, $f$ y est donc dérivable.
 \\
 \begin{gather*}
 \implies f'(x) =
@@ -146,7 +146,7 @@ $$
 
 \item{
 % 4
-Soit $g$ une fonction définie est bornée aux voisinage d'un point $a \in \mathbb R$.
+Soit $g$ une fonction définie est bornée aux voisinage d'un point $a \in \mathbb R$, et $h$ une fonction qui tend vers $0$ quand $x$ tend vers $a$.
 $$
 \lim_{x \to a}h(x) = 0 \iff \forall \varepsilon_0 > 0, \exists \mu_0 > 0, |x-a| < \mu_0 \implies |h(x)| < \varepsilon_0
 $$
@@ -183,7 +183,7 @@ On a donc
 $$
 \lim_{x \to 0}g(x)h(x) = \lim_{x \to 0}f'(x) = 0
 $$
-Or $f'(0) = 0$ donc la fonction $f'$ est bien continue en $0$, ce qui prouve que la fonction $f$ est de classe $C^1$.
+Or $f'(0) = 0$ donc la fonction $f'$ est bien continue en $0$, ce qui par ailleurs montre que la fonction $f$ est de classe $C^1$.
 % 4
 }
 \\ \\
@@ -254,8 +254,7 @@ On sait que
 \begin{align*}
 &\pi \sin x_0 + 4 x_0 \cos x_0 = 0 \\
 \implies &\pi \tan x_0 + 4 x_0 = 0 \\
-\implies &\tan x_0 = \frac{-4 x_0}{\pi} \\
-\implies &x_0 = \text{arctan}(\frac{-4 x_0}{\pi})
+\implies &\tan x_0 = \frac{-4 x_0}{\pi}
 \end{align*}
 On a aussi
 \begin{align*}
@@ -297,7 +296,7 @@ h'([0; 1]) =& [h'(0); h'(1)] \\
 =& [-\frac{1}{\pi}; -\frac{\pi}{\pi^2\frac{9}{2}}] \\
 =& [-\frac{1}{\pi}; -\frac{2}{9\pi}]
 \end{align*}
-On en déduit que $\text{sup}_I|h'| \leq 1/\pi$, or $1/\pi < 1$ donc la fonction $h$ est contractante de rapport inférieur ou égal à $1/\pi$ sur $I$. \\
+On en déduit que $\text{sup}_I|h'| = 1/\pi$, or $1/\pi < 1$ donc la fonction $h$ est contractante de rapport $1/\pi$ sur $I$. \\
 
 La fonction $h$ est décroissante sur $[0; 1]$, ainsi
 \begin{align*}
@@ -373,10 +372,11 @@ De par la parité de $f$, on a \\
 \foreach \y in {-2,...,-1,1,2,...,2}
 \draw[shift={(0,\y)}] (2pt,0pt) -- (-2pt,0pt) node[left] {\footnotesize $\y$};
 \node[below left] at (0,0) {\footnotesize $0$};
+% plot
+\draw[scale=1,domain=-3.14:3.14,smooth,variable=\x,blue] plot ({\x},{abs(\x)^(pi/4)*sin(deg(\x))});
 \end{tikzpicture}
 % 7
 }
-
 
 \end{enumerate}
 
